@@ -25,6 +25,7 @@ namespace Memory
         {
             InitializeComponent();
             UpdateDifficulty();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -40,7 +41,16 @@ namespace Memory
 
         private void UpdateDifficulty()
         {
-            DifficultyB.Content = "Difficulty: " + Mechanics.difficulty.ToString();
+            string diffString = Mechanics.GetDifficultyString();
+            DifficultyB.Content = "Difficulty: " + diffString;
+        }
+
+        private void StartB_Click(object sender, RoutedEventArgs e)
+        {
+            Mechanics.CreateDeck();
+            GameWindow game = new GameWindow();
+            game.Show();
+            this.Close();
         }
     }
 }
