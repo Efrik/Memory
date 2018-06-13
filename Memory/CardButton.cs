@@ -13,6 +13,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Timers;
 
 namespace Memory
 {
@@ -77,9 +78,9 @@ namespace Memory
             this.Click += CardButton_Click;
         }
 
-        private void CardButton_Click(object sender, RoutedEventArgs e)
+        private void CardButton_Click(object sender, RoutedEventArgs e) //What happens when the card is clicked
         {
-            FlipCard();
+            FlipCard(); //This should be that if the card is unblocked, then it flips.
         }
 
         private void SetImage() //checks which image it should have and sets it right.
@@ -99,10 +100,32 @@ namespace Memory
         {
             cardHere.FlipCard();
             double width = Width;
-            while (Width > 5) { Width /=2; }
-            SetImage();
-            while (Width*2 < width) { Width *= 2; }
-            Width = width;
+            Timer timing = new Timer(50);
+            timing.Start();
+            if (Width > 5)
+            {
+                timing.Elapsed += Shrink;
+            }
+            if (Width <= 5)
+            {
+                SetImage();
+                timing.Elapsed -= Shrink;
+                timing.Elapsed += Grow;
+            }
+            if (Width * 2 > width)
+            {
+                Width = width;
+            }
+        }
+
+        private void Shrink(Object sender, ElapsedEventArgs e)
+        {
+            Width /= 2;
+        }
+
+        private void Grow(Object sender, ElapsedEventArgs e)
+        {
+            Width *= 2;
         }
 
     }
