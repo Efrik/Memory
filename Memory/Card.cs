@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Memory
 {
-    class Card
+    public class  Card
         // This class stores info about every card: the shape and color (and in the future, the image as well), and the flip state.
     {
         public enum Shape { square, triangle, circle};
@@ -15,7 +15,8 @@ namespace Memory
         ConsoleColor color = new ConsoleColor();
         public enum State { show, hide};
         State state = State.hide;
-        
+
+        private bool blocked = false;
 
         public Card() //Normal creation method to random shape and color
         {
@@ -66,9 +67,14 @@ namespace Memory
             return state;
         }
 
-        public Shape GetShape()
+        public string GetShape()
         {
-            return shape;
+            return shape.ToString();
+        }
+
+        public ConsoleColor GetColor()
+        {
+            return color;
         }
 
         public bool IsHide()
@@ -81,6 +87,16 @@ namespace Memory
         {
             if (state == State.hide) return false;
             else return true;
+        }
+
+        public void BlockUnblock()
+        {
+            blocked = !blocked;
+        }
+
+        public bool IsBlocked()
+        {
+            return blocked;
         }
     }
 }

@@ -15,9 +15,19 @@ namespace Memory
 
         public static void CreateCoupleCard() //Creates a Card and adds two copies of it to the deck
         {
-            Card crd = new Card();
+            Card crd = null;
+            do { crd = new Card(); } while (IsCardInDeck(crd));
             deck.Add(crd);
             deck.Add(crd);
+        }
+
+        private static bool IsCardInDeck(Card crd)
+        {
+            foreach (Card aspirant in deck)
+            {
+                if (crd.GetColor() == aspirant.GetColor() & crd.GetShape()==aspirant.GetShape()) return true;
+            }
+            return false;
         }
 
         public static void AddCard(Card crd)
