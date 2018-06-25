@@ -14,7 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Timers;
+using System.Drawing;
 using Memory;
+using System.Drawing;
 
 namespace Memory
 {
@@ -85,22 +87,23 @@ namespace Memory
             {
                 FlipCard();
                 Mechanics.AddToCheckCouple(this);
-                if (Mechanics.TwoCardsIn())
-                {
-                    Mechanics.CheckCouple();
-                }
+                BlockCard();
+                Mechanics.CheckCouple();
             }
             SetImage();
         }
 
-        private void SetImage() //checks which image it should have and sets it right.
+        public void SetImage() //checks which image it should have and sets it right.
         {
-
-            if (cardHere.IsHide()) image.Source = Deck.backCard;
+            
+            if (cardHere.IsHide())
+            {
+                image.Source = Deck.backCard; 
+            }
             else
             {
-                image.Source = new BitmapImage(new Uri(@"D:\Efrik\Documents\Visual Studio 2017\Projects\Memory\Memory\Resources\Images\Background.png"));
-                Content = cardHere.GetShape().ToString() + cardHere.GetColor().ToString();
+                image.Source = new BitmapImage (new Uri (@"D:\Efrik\Documents\Visual Studio 2017\Projects\Memory\Memory\Resources\Images\Background.png"));
+               
             }
         }
 
@@ -109,6 +112,11 @@ namespace Memory
             return cardHere;
         }
 
+        // some methods to handle the card
+        public void ShowCard()  { cardHere.ShowCard(); }
+        public void BlockCard() { cardHere.Block(); }
+        public void HideCard()  { cardHere.HideCard(); }
+        public void UnblockCard() { cardHere.Unblock(); }
         public void FlipCard() //shrinks the card, changes the image, and resizes the card, hopefully dinamically.
         {
             cardHere.FlipCard();
@@ -133,20 +141,16 @@ namespace Memory
             */
         }
 
+
+
         private void DrawCard() //this method should draw the shape or picture in the card when it is fliped to show.
         {
-
+            cardHere.DrawForm();
         }
 
-        private void Shrink(Object sender, ElapsedEventArgs e)
+        public void ResetButton()
         {
-            Width /= 2;
+            SetImage();
         }
-
-        private void Grow(Object sender, ElapsedEventArgs e)
-        {
-            Width *= 2;
-        }
-
     }
 }

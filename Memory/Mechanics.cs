@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Memory
 {
@@ -11,8 +12,8 @@ namespace Memory
         public enum Difficulty { Baby=0, Easy, Normal, Hard } ;
         private static Difficulty difficulty = Difficulty.Easy;
 
-        private static CardButton card1=null; //These two are the cards that will be checked if they are a couple
-        private static CardButton card2=null;
+        public static CardButton button1=null; //These two hold the cards that will be checked as couple
+        public static CardButton button2=null;
 
         public static void ChangeDifficulty()
         {
@@ -43,19 +44,28 @@ namespace Memory
         }
 
         //Some methods to work with couples of cards
-        public static void AddToCheckCouple(CardButton crd)
+        public static void AddToCheckCouple(CardButton btn) //Adds the card as the first or second to check to.
         {
-            if (card1 == null) card1 = crd;
-            else card2 = crd; 
+            if (button1 == null)
+            {
+                button1 = btn;
+                //MessageBox.Show("Button1: " + button1.GetCard().GetShape().ToString() + button1.GetCard().GetColor().ToString());
+            }
+            else if (button2 == null)
+            {
+                button2 = btn;
+                //MessageBox.Show("Button1: " + button1.GetCard().GetShape().ToString() + button1.GetCard().GetColor().ToString() + "/nButton2: " + button2.GetCard().GetShape().ToString() + button2.GetCard().GetColor().ToString());
+                //else button1.Content = "None is null";
+            }
         }
 
-        public static bool TwoCardsIn()
+        public static bool TwoCardsIn() //bool that checks if there are already two cards to be checked
         {
-            if (card2 != null) return true;
+            if (button2 != null && button1 != null) return true;
             else return false;
         }
 
-        public static bool IsCouple(CardButton crd1, CardButton crd2)
+        private static bool IsCouple(CardButton crd1, CardButton crd2) //Checks if the two cards have the same colour and shape, given two cards.
         {
             string crd1Shape = crd1.GetCard().GetShape();
             string crd2Shape = crd2.GetCard().GetShape();
@@ -65,24 +75,34 @@ namespace Memory
             else return false;
         }
 
-        public static bool IsCouple()
+        private static bool IsCouple() //Check if the two cards in the couple (there should be two) have the saem colour and shape
         {
-            bool rslt = IsCouple(card1, card2);
+            bool rslt = IsCouple(button1, button2);
             return rslt;
         }
 
-        public static void CheckCouple()
+        public static void CheckCouple() //Checks if the two cards are equal and acts accordingly
         {
             if (TwoCardsIn())
             {
+                Card cardNum1 = button1.GetCard();
+                Card cardNum2 = button2.GetCard();
                 if (IsCouple())
                 {
-                    Card cardNum1 = card1.GetCard();
-                    Card cardNum2 = card2.GetCard();
-                    cardNum1.ShowCard();
-                    cardNum2.ShowCard();
-                    cardNum1.BlockUnblock();
-                    cardNum2.BlockUnblock();
+                    MessageBox.Show("It loks like it is a couple");
+                    button1.ShowCard();
+                    button2.ShowCard();
+                    button1.BlockCard();
+                    button2.BlockCard();
+                    ResetCouple();
+                }
+                else
+                {
+                    MessageBox.Show("It loks like it is NOT a couple");
+                    button1.UnblockCard();
+                    button2.UnblockCard();
+                    button1.HideCard();
+                    button2.HideCard();
                     ResetCouple();
                 }
             }
@@ -90,10 +110,12 @@ namespace Memory
 
         public static void ResetCouple()
         {
-            if (!card1.GetCard().IsBlocked()) card1.GetCard().HideCard();
-            if (!card2.GetCard().IsBlocked()) card2.GetCard().HideCard();
-            card1 = null;
-            card2 = null;
+
+            button1.ResetButton();
+            button2.ResetButton();
+            MessageBox.Show("Button1: " + button1.GetCard().GetState().ToString() + "/nButton2: " + button2.GetCard().GetState().ToString());
+            button1 = null;
+            button2 = null;
         }
     }
 }

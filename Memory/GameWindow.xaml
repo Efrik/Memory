@@ -15,6 +15,7 @@
         <Label Content="Couples found:&#xD;&#xA;Couples left:&#xD;&#xA;Times tried" HorizontalAlignment="Left" Height="65" Margin="229,10,0,0" VerticalAlignment="Top" Width="155" FontFamily="Showcard Gothic"/>
         <Grid HorizontalAlignment="Left" Height="314" Grid.Row="1" VerticalAlignment="Top" Width="772" Margin="10,10,0,0" Name="table"/>
         <Button Content="Exit" HorizontalAlignment="Left" Height="65" Margin="652,10,0,0" VerticalAlignment="Top" Width="130" Background="#FF4BC6D3" FontFamily="Showcard Gothic" FontSize="24" Click="Button_Click"/>
+        <Label x:Name="TestLabel" Content="Testing stuff" HorizontalAlignment="Left" Height="65" Margin="402,10,0,0" VerticalAlignment="Top" Width="245"/>
 
     </Grid>
 </Window>

@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Shapes;
+using System.Drawing;
+using System.Windows.Media;
 
 namespace Memory
 {
-    public class  Card
+    public class Card
         // This class stores info about every card: the shape and color (and in the future, the image as well), and the flip state.
     {
         public enum Shape { square, triangle, circle};
@@ -15,6 +18,7 @@ namespace Memory
         ConsoleColor color = new ConsoleColor();
         public enum State { show, hide};
         State state = State.hide;
+
 
         private bool blocked = false;
 
@@ -85,18 +89,39 @@ namespace Memory
 
         public bool IsShow()
         {
-            if (state == State.hide) return false;
-            else return true;
+            if (state == State.show) return true;
+            else return false;
         }
 
-        public void BlockUnblock()
+        public void Block()
         {
-            blocked = !blocked;
+            blocked = true;
+        }
+
+        public void Unblock()
+        {
+            blocked = false;
         }
 
         public bool IsBlocked()
         {
             return blocked;
+        }
+
+        public void DrawForm() //I maybe can take an existing image (wich could be later used for adding other images) and transform it.
+        {
+
+            switch (shape)
+            {
+                case Shape.square:
+                    break;
+                case Shape.triangle:
+                    break;
+                case Shape.circle:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

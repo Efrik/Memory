@@ -82,10 +82,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="346.31632"
-     inkscape:cy="603.5181"
+     inkscape:cx="-181.48839"
+     inkscape:cy="710.59427"
      inkscape:document-units="px"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer3"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
@@ -100,7 +100,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -208,4 +208,54 @@
        inkscape:export-ydpi="90"
        inkscape:connector-curvature="0" />
   </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Triangle">
+    <rect
+       style="opacity:1;fill:#72e593;fill-opacity:1"
+       id="rect4166"
+       width="794.99005"
+       height="780.8479"
+       x="-759.6347"
+       y="-35.57209" />
+    <circle
+       style="opacity:1;fill:#ffffff;fill-opacity:1"
+       id="path4160"
+       cx="-202.03052"
+       cy="247.27061"
+       r="108.08632" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1"
+       id="rect4162"
+       width="203.04066"
+       height="203.04066"
+       x="-455.5788"
+       y="429.09808" />
+    <path
+       sodipodi:type="star"
+       style="opacity:1;fill:#ffffff;fill-opacity:1"
+       id="path4164"
+       sodipodi:sides="5"
+       sodipodi:cx="-521.23873"
+       sodipodi:cy="249.29093"
+       sodipodi:r1="115.78481"
+       sodipodi:r2="57.892406"
+       sodipodi:arg1="0.94649007"
+       sodipodi:arg2="1.5748086"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m -453.55849,343.23511 -67.9125,-36.05225 -68.19961,35.50613 13.30161,-75.72938 -54.84318,-53.88969 76.13335,-10.75109 34.30467,-68.81179 33.75139,69.08485 76.04462,11.36167 -55.27384,53.44787 z"
+       inkscape:transform-center-x="-0.14355659"
+       inkscape:transform-center-y="-10.919846" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Circle" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="Square" />
 </svg>
