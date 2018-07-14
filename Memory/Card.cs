@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Shapes;
 using System.Drawing;
 using System.Windows.Media;
+using System.Threading;
 
 namespace Memory
 {
@@ -18,6 +19,7 @@ namespace Memory
         ConsoleColor color = new ConsoleColor();
         public enum State { show, hide};
         State state = State.hide;
+
 
 
         private bool blocked = false;
